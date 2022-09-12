@@ -1,25 +1,31 @@
-import styles from '../styles/Home.module.css'
-import Link from "next/link";
-import aa from "as/img.png"
-
-export default function Home() {
+import {GetServerSideProps, NextPage } from 'next';
+import UAParser from 'ua-parser-js';
+interface Props{
+    browser:{
+        name:string
+        version:string
+        major:string
+    }
+}
+const Index:NextPage<Props> =(props)=> {
+    const {browser}=props
   return (
-    <div className={styles.container} style={{background:"lightblue"}}>
-        <h1 className={styles.title}>
-          Welcome to
-          <Link rel="stylesheet" href="/posts/1">
-            <a>Next.js!</a>
-          </Link>
-        </h1>
-        <img src={aa} alt=""/>
-
-
-        <style jsx>{`
-        a{
-        color:yellow;
-        }      
-      `}</style>
+    <div  style={{background:"lightblue"}}>
+        <h1>浏览器是{browser.name}</h1>
 
     </div>
   )
+}
+export default Index
+
+// SSR
+export const getServerSideProps:GetServerSideProps=async (context)=>{
+    const ua = context.req.headers['user-agent']
+    const result = new UAParser(ua).getBrowser()
+    console.log(result);
+    return{
+        props:{
+            browser:result
+        }
+    }
 }
