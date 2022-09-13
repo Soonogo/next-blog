@@ -1,5 +1,5 @@
 import Link from "next/link";
-import png from 'as/img.png'
+import png from 'assets/images/img.png'
 
 const X =()=>{
     return (

@@ -1,4 +1,6 @@
 import {NextPage} from "next";
+import Link from "next/link";
+import React from "react";
 import {usePosts} from "../../hooks/usePosts";
 import {getPosts} from "../../lib/posts";
 interface Props{
@@ -10,7 +12,12 @@ const PostsIndex:NextPage<Props> =(props)=>{
     return(
         <div>
             <h1>文章列表</h1>
-            {posts.map(r=><div key={r.id}>{r.id}</div>)}
+            {posts.map(post=><div key={post.id}>
+                <Link href="/posts/[id]" as={`/posts/${post.id}`}>
+                    <a>{post.id}</a>
+                </Link>
+
+            </div>)}
         </div>
     )
 }

@@ -8,7 +8,7 @@
 /.vscode
 # testing
 /coverage
-
+/blog-data/
 # next.js
 /.next/
 /out/
