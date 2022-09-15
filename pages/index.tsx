@@ -12,7 +12,7 @@ const Index:NextPage<Props> =(props)=> {
     const {browser}=props
   return (
     <div  style={{background:"lightblue"}}>
-        <h1>浏览器是{browser.name}</h1>
+        <h1>浏览器是2{browser.name}</h1>
 
     </div>
   )
