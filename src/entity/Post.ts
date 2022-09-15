@@ -19,7 +19,7 @@ export class Post {
     @Column('text')
     content: string;
     @CreateDateColumn()
-    createdAt: Date;
+    createAt: Date;
     @UpdateDateColumn()
     updateAt: Date;
     @ManyToOne(type => User, user => user.posts)
